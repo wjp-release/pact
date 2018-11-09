@@ -71,7 +71,7 @@ public abstract class ConcurrentProvider implements Provider, AutoCloseable {
         return promise_chain;
     }
 
-    public abstract void handle(Request request, PromiseChain promise_chain);
+    protected abstract void handle(Request request, PromiseChain promise_chain);
 
     private class ConcurrentRoutine extends Thread {
         @Override

@@ -25,10 +25,11 @@
 
 package org.pact;
 
-import java.util.Optional;
+import org.pact.shared.Pact;
+import org.pact.shared.Request;
 
 public interface Provider {
     // accept a request, return a chain of promises immediately
-    public PromiseChain accept(Request request);
+    public Pact accept(Request request);
 
 }

@@ -23,12 +23,26 @@
  * SOFTWARE.
  */
 
-package org.pact;
+package org.pact.shared;
 
-public class PromiseChain {
-    public PromiseChain(Request request)
+import org.pact.consumer.ConsumerPact;
+
+import java.util.List;
+import java.util.function.Function;
+
+public interface Request {
+
+    default void add_step(Function<Object,Object> cb)
     {
-
+        cb_chain().add(cb);
     }
 
+    default int nr_steps()
+    {
+        return cb_chain().size()+1;
+    }
+
+    List<Function<Object,Object>> cb_chain();
+
+    ConsumerPact submit();
 }
